@@ -1,0 +1,81 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="serial_init" id="jhrsi^b;0AIR?:prOcg?" x="-10" y="94">
+    <field name="pin">0</field>
+    <field name="SPEED">9600</field>
+    <next>
+      <block type="variables_set" id="p^wQvSMocXS]Wc,=}3%/">
+        <field name="VAR">ler_sensor</field>
+        <value name="VALUE">
+          <block type="digital_read" id=":uG|{I]HpG.|D^)7lblR">
+            <value name="PIN">
+              <shadow type="math_number" id="bifNL?/iU=P=VL5wSEdV">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="*@aEh/R{]oe~6Zzody_U">
+            <value name="IF0">
+              <block type="logic_compare_log" id="M?$1K($`sI6?1])b59:W">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <shadow type="math_number" id="s1%A;-bB5o|+/8?lo${}">
+                    <field name="NUM">R</field>
+                  </shadow>
+                  <block type="variables_get" id="7iAh2dR6M(~jBY:gA/$P">
+                    <field name="VAR">ler_sensor</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="-=#Ivn9aTAbAzeTm=HaE">
+                    <field name="NUM">10</field>
+                  </shadow>
+                  <block type="logic_hilov" id="+M{2i,pN{-|yx5|8myhV">
+                    <field name="SPEED1">HIGH</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="!s1o/TtWZYjAW!a/H(M$">
+                <field name="VAR">conta_virada_pote</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="t0}}W?bH3hdBSl:#![Nw">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <shadow type="math_number" id="To.c|]p]d^|pzpD2xG+J">
+                        <field name="NUM">R</field>
+                      </shadow>
+                      <block type="variables_get" id="sp6+6o?fdjuo,sHZpj^3">
+                        <field name="VAR">conta_virada_pote</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="46Chq$i?x%g,]#YrCE},">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_write_ln" id="b5`6K25VXyO;-ea+r/3y">
+                    <value name="CONTENT">
+                      <shadow type="text" id="W!UB{Hl-qHnOnZL|X=@(">
+                        <field name="TEXT">ArduBlock</field>
+                      </shadow>
+                      <block type="variables_get" id="{BNN?Vi(he7(q9{{]cZF">
+                        <field name="VAR">conta_virada_pote</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
