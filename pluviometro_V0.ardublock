@@ -1,39 +1,53 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <toolbox>toolbox_arduino_all</toolbox>
-  <block type="serial_init" id="jhrsi^b;0AIR?:prOcg?" x="-10" y="94">
-    <field name="pin">0</field>
-    <field name="SPEED">9600</field>
-    <next>
-      <block type="variables_set" id="p^wQvSMocXS]Wc,=}3%/">
+  <block type="arduino_setup" id=")|;wDR~;2xm$#`Wp4RnQ" x="-19" y="30">
+    <statement name="MySetup">
+      <block type="serial_init" id="jhrsi^b;0AIR?:prOcg?">
+        <field name="pin">0</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="A$IV4pL{bc5K2PuW;Uu~">
+            <field name="VAR">ler_sensor_anterior</field>
+            <value name="VALUE">
+              <block type="math_number" id="L%L@i,W4S*C/3ZY.l.?o">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="MyLoop">
+      <block type="variables_set" id="i3hSR(rn9#9t:6^Y#TI3">
         <field name="VAR">ler_sensor</field>
         <value name="VALUE">
-          <block type="digital_read" id=":uG|{I]HpG.|D^)7lblR">
+          <block type="digital_read" id="E.7hbT;Z$|@t)j=)~5Ui">
             <value name="PIN">
-              <shadow type="math_number" id="bifNL?/iU=P=VL5wSEdV">
-                <field name="NUM">2</field>
+              <shadow type="math_number" id="6wBXl:Z+~YZ22Y~1#9~F">
+                <field name="NUM">3</field>
               </shadow>
             </value>
           </block>
         </value>
         <next>
-          <block type="controls_if" id="*@aEh/R{]oe~6Zzody_U">
+          <block type="controls_if" id=",fWmR%GixU=#IIH%/PmW">
             <value name="IF0">
-              <block type="logic_compare_log" id="M?$1K($`sI6?1])b59:W">
-                <field name="OP">EQ</field>
+              <block type="logic_compare_log" id=",|U-NFsEchrgh@Crm2Z5">
+                <field name="OP">NEQ</field>
                 <value name="A">
-                  <shadow type="math_number" id="s1%A;-bB5o|+/8?lo${}">
+                  <shadow type="math_number" id="x28`8Z;G^s|]n2aO])$F">
                     <field name="NUM">R</field>
                   </shadow>
-                  <block type="variables_get" id="7iAh2dR6M(~jBY:gA/$P">
+                  <block type="variables_get" id="I%8:[Bm7}up|0iEE=3%C">
                     <field name="VAR">ler_sensor</field>
                   </block>
                 </value>
                 <value name="B">
-                  <shadow type="math_number" id="-=#Ivn9aTAbAzeTm=HaE">
+                  <shadow type="math_number" id="b~M,^(^tOx011tO^oZaz">
                     <field name="NUM">10</field>
                   </shadow>
-                  <block type="logic_hilov" id="+M{2i,pN{-|yx5|8myhV">
-                    <field name="SPEED1">HIGH</field>
+                  <block type="variables_get" id="C~:KY)xqFm:X3reP1F;3">
+                    <field name="VAR">ler_sensor_anterior</field>
                   </block>
                 </value>
               </block>
@@ -69,6 +83,26 @@
                         <field name="VAR">conta_virada_pote</field>
                       </block>
                     </value>
+                    <next>
+                      <block type="base_delay" id="1?~PQ^~w=I1iLg66Kv^4">
+                        <field name="unite">s</field>
+                        <value name="DELAY_TIME">
+                          <shadow type="math_number" id="U!N5/er$y/y7Vyx%o{!^">
+                            <field name="NUM">2</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="sJfaY;YP}Wrq7g_7K,[S">
+                            <field name="VAR">ler_sensor_anterior</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="eS/*$bg+9HH%H96ORO0p">
+                                <field name="VAR">ler_sensor</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
                   </block>
                 </next>
               </block>
@@ -76,6 +110,6 @@
           </block>
         </next>
       </block>
-    </next>
+    </statement>
   </block>
 </xml>
