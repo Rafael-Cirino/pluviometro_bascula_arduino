@@ -74,13 +74,19 @@
                   </block>
                 </value>
                 <next>
-                  <block type="serial_write_ln" id="b5`6K25VXyO;-ea+r/3y">
-                    <value name="CONTENT">
-                      <shadow type="text" id="W!UB{Hl-qHnOnZL|X=@(">
-                        <field name="TEXT">ArduBlock</field>
+                  <block type="inout_digital_write" id="%!`1e,7.c@Jc*]:(Tf`}">
+                    <value name="PIN">
+                      <shadow type="math_number" id="bnzmtQo@9B~zd3AUINr/">
+                        <field name="NUM">6</field>
                       </shadow>
-                      <block type="variables_get" id="{BNN?Vi(he7(q9{{]cZF">
-                        <field name="VAR">conta_virada_pote</field>
+                    </value>
+                    <value name="STAT">
+                      <shadow type="math_number" id="ZtxBv_I5afLw1u;j`,pn">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="frequency" id="O%aYrkZ(O(l?kI%/1}-w">
+                        <field name="NOTE">E</field>
+                        <field name="OCTAVE">2</field>
                       </block>
                     </value>
                     <next>
@@ -88,17 +94,50 @@
                         <field name="unite">s</field>
                         <value name="DELAY_TIME">
                           <shadow type="math_number" id="U!N5/er$y/y7Vyx%o{!^">
-                            <field name="NUM">2</field>
+                            <field name="NUM">0.3</field>
                           </shadow>
                         </value>
                         <next>
-                          <block type="variables_set" id="sJfaY;YP}Wrq7g_7K,[S">
-                            <field name="VAR">ler_sensor_anterior</field>
-                            <value name="VALUE">
-                              <block type="variables_get" id="eS/*$bg+9HH%H96ORO0p">
-                                <field name="VAR">ler_sensor</field>
-                              </block>
+                          <block type="notone22" id="1d?rJS{^xuKMHJT`tV6a">
+                            <value name="PIN">
+                              <shadow type="math_number" id="pP(`?{qI00,+]8-_Ewd?">
+                                <field name="NUM">6</field>
+                              </shadow>
                             </value>
+                            <next>
+                              <block type="variables_set" id="sJfaY;YP}Wrq7g_7K,[S">
+                                <field name="VAR">ler_sensor_anterior</field>
+                                <value name="VALUE">
+                                  <block type="variables_get" id="eS/*$bg+9HH%H96ORO0p">
+                                    <field name="VAR">ler_sensor</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="serial_write_ln" id="b5`6K25VXyO;-ea+r/3y">
+                                    <value name="CONTENT">
+                                      <shadow type="text" id="W!UB{Hl-qHnOnZL|X=@(">
+                                        <field name="TEXT">ArduBlock</field>
+                                      </shadow>
+                                      <block type="variables_get" id="{BNN?Vi(he7(q9{{]cZF">
+                                        <field name="VAR">conta_virada_pote</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="serial_write_ln" id="r?3NKVw.J+V(.e]LjP4=">
+                                        <value name="CONTENT">
+                                          <shadow type="text" id="W!UB{Hl-qHnOnZL|X=@(">
+                                            <field name="TEXT">ArduBlock</field>
+                                          </shadow>
+                                          <block type="inout_analog_read" id="#W,~{GtRT7{NL}$o=uUM">
+                                            <field name="broche">A0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
                           </block>
                         </next>
                       </block>
